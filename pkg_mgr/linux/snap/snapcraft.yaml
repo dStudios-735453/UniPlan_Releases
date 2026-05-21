@@ -7,7 +7,7 @@ description: UniPlan is a comprehensive academic planner built with React Native
 license: Proprietary
 website: https://uniplan.dstudios.org
 issues: https://github.com/dStudios-735453/UniPlan_Releases/issues
-icon: snap/gui/favicon.png
+icon: ./gui/favicon.png
 
 grade: stable
 confinement: strict
@@ -21,7 +21,7 @@ slots:
 apps:
   uniplan:
     command: usr/bin/uniplan
-    desktop: snap/gui/uniplan.desktop
+    desktop: ./gui/uniplan.desktop
     extensions: [gnome]
     plugs:
       - desktop
@@ -47,3 +47,8 @@ parts:
     stage-packages:
       - libwebkit2gtk-4.1-0
       - libgirepository-1.0-1
+  gui-assets:
+    plugin: dump
+    source: ./gui
+    organize:
+      "*": ./gui/

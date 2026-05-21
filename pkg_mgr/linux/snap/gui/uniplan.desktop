@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=UniPlan
 Exec=uniplan
-Icon=favicon
+Icon=${SNAP}/meta/gui/favicon.png
 Type=Application
 Categories=Education;
+Terminal=false

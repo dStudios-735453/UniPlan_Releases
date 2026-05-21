@@ -7,7 +7,7 @@ description: UniPlan is a comprehensive academic planner built with React Native
 license: Proprietary
 website: https://uniplan.dstudios.org
 issues: https://github.com/dStudios-735453/UniPlan_Releases/issues
-icon: ./favicon.png
+icon: snap/gui/favicon.png
 
 grade: stable
 confinement: strict
@@ -21,6 +21,7 @@ slots:
 apps:
   uniplan:
     command: usr/bin/uniplan
+    desktop: snap/gui/uniplan.desktop
     extensions: [gnome]
     plugs:
       - desktop
@@ -39,14 +40,9 @@ platforms:
 parts:
   uniplan:
     plugin: dump
-    source: package.deb
-    override-pull: |
-      if [ "$SNAPCRAFT_TARGET_ARCH" = "amd64" ]; then
-        curl -L -o package.deb https://github.com/dStudios-735453/UniPlan_Releases/releases/download/v01.05.2026-0806/UniPlan_0.0.1_amd64.deb
-      elif [ "$SNAPCRAFT_TARGET_ARCH" = "arm64" ]; then
-        curl -L -o package.deb https://github.com/dStudios-735453/UniPlan_Releases/releases/download/v01.05.2026-0806/UniPlan_0.0.1_arm64.deb
-      fi
-      snapcraftctl pull
+    source:
+      - on amd64: https://github.com/dStudios-735453/UniPlan_Releases/releases/download/v20.05.2026-1728_linux/Uniplan_0.0.1_amd64.deb
+      - on arm64: x
     source-type: deb
     stage-packages:
       - libwebkit2gtk-4.1-0

@@ -1,7 +1,7 @@
 id: org.dstudios.uniplan
-runtime: org.freedesktop.Platform
-runtime-version: "25.08"
-sdk: org.freedesktop.Sdk
+runtime: org.gnome.Platform
+runtime-version: "50"
+sdk: org.gnome.Sdk
 command: uniplan
 separate-locales: false
 
@@ -11,11 +11,17 @@ finish-args:
   - --share=ipc
   - --share=network
   - --device=dri
+  - --filesystem=xdg-config/fontconfig:ro
+  - --filesystem=~/.fonts:ro
+  - --talk-name=org.a11y.Bus
+  - --socket=fallback-x11
 
 modules:
   - name: uniplan
     buildsystem: simple
     build-commands:
+      - ar x Uniplan_0.0.1_amd64.deb
+      - tar xf data.tar.*
       - install -Dm755 usr/bin/uniplan /app/bin/uniplan
       - install -Dm644 org.dstudios.uniplan.png /app/share/icons/hicolor/512x512/apps/org.dstudios.uniplan.png
       - install -Dm644 org.dstudios.uniplan.desktop /app/share/applications/org.dstudios.uniplan.desktop
@@ -24,17 +30,19 @@ modules:
     sources:
       - type: file
         only-arches: [x86_64]
-        path: https://github.com/dStudios-735453/UniPlan_Releases/releases/download/v20.05.2026-1728_linux/Uniplan_0.0.1_amd64.deb
+        url: https://github.com/dStudios-735453/UniPlan_Releases/releases/download/v20.05.2026-1728_linux/Uniplan_0.0.1_amd64.deb
         sha256: b1bcf9ad3a49b2cd7d066acbf97725ca579a422d3ca6189300559f4672c50978
         dest-filename: Uniplan_0.0.1_amd64.deb
-      - type: file
-        only-arches: [aarch64]
-        path: will be added
-        sha256: xxxxxxxx
-        dest-filename: Uniplan_0.0.1_arm64.deb
+      #- type: file
+      #  only-arches: [aarch64]
+      #  url: will be added
+      #  sha256: xxxxxxxx
+      #  dest-filename: Uniplan_0.0.1_arm64.deb
       - type: file
         path: org.dstudios.uniplan.png
       - type: file
         path: org.dstudios.uniplan.desktop
       - type: file
         path: org.dstudios.uniplan.metainfo.xml
+      - type: file
+        path: LICENSE

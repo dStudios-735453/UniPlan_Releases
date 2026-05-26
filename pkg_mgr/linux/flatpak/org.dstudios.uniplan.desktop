@@ -2,7 +2,7 @@
 Version=0.0.1
 Name=UniPlan
 Exec=uniplan
-Icon=${SNAP}/meta/gui/favicon.png
+Icon=org.dstudios.uniplan
 Type=Application
 Categories=Education;
 Terminal=false

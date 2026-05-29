@@ -13,12 +13,12 @@ UniPlan stores the following data locally on your device and, if you enable clou
 - **Homework & Todo Items**: Assignment descriptions, due dates, due times, checklist items, page numbers, completion status, pinned status, and notification settings (encrypted with aes-256 on Firestore, sent only with sync on).
 - **App Settings**: Theme preferences, tab order, language selection (English/German/Romanian), default lesson/break durations, subject and teacher presets, autofill configurations, manual holidays, and vacation mode settings (encrypted with aes-256 on Firestore, sent only with sync on).
 - **School Integration Credentials**: If you connect to Schulmanager or Adservio, UniPlan stores your username and password.
-- **User PIN**: A PIN you set for encrypting your data is stored in the device's Secure Enclave (iOS Keychain / Android Keystore) and never sent to Firestore in plaintext.
+- **User PIN**: A PIN you set for encrypting your data is stored in the device's Secure Enclave (iOS Keychain / Android Keystore) on mobile. On desktop, the encryption key is stored via the platform's standard storage. The PIN itself is never stored or sent to Firestore in plaintext.
 
 ### 1.2 Data Collected Automatically
 
 - **Calendar Events**: With your permission, UniPlan reads events from your device's calendar to display them alongside your schedule. On iOS this is read-only access. Event titles and locations may be synced to Firestore in encrypted form if cloud sync is enabled.
-- **Analytics Events**: UniPlan uses Firebase Analytics to track anonymous usage events when you add, edit, or delete schedule items, homework, or todos without any kind of identifiable data, only the event that it was done. Ad ID collection and automatic event collection are disabled.
+- **Analytics Events**: UniPlan uses Firebase Analytics to collect anonymous usage data, including screen views, user engagement, and specific actions (adding, editing, or deleting schedule items, homework, and todos). No personally identifiable data is included — only event names and basic engagement metrics. Ad ID collection is disabled.
 - **Device Information**: The app generates a random device ID for calendar sync coordination. No personal device identifiers (IMEI, serial numbers, etc.) are collected.
 
 ### 1.3 School Integration Data
@@ -27,7 +27,7 @@ If you connect third-party school platforms:
 
 - **Schulmanager (Germany)**: UniPlan fetches your lesson schedules, substitutions, class hour definitions, and holiday data from Schulmanager Online.
 - **Adservio (Romania)**: UniPlan fetches your grades, absences, averages, subjects, class info, and academic periods from Adservio.
-- This data is stored locally and, if cloud sync is enabled, not sent to Firestore.
+- This data is stored locally and never sent to Firebase, regardless of cloud sync settings.
 
 ## 2. HOW UniPlan STORES AND PROCESSES DATA
 
@@ -35,13 +35,13 @@ If you connect third-party school platforms:
 
 - **Primary Storage**: All your data is persisted on-device using React Native AsyncStorage. This includes schedules, homework, todos, settings, and integration data.
 - **Secure Storage**: Your encryption Master Key and certain authentication tokens are stored in expo-secure-store, which uses the platform's hardware-backed secure storage (iOS Keychain, Android Keystore).
-- **Desktop (Tauri)**: On desktop builds, UniPlan uses the Tauri Store Plugin for persistent storage.
+- **Desktop (Tauri)**: On desktop builds, storage is handled via AsyncStorage (mapped to the browser's local storage context within the Tauri webview).
 
 ### 2.2 Cloud Storage (Optional)
 
 Cloud sync is **opt-in** and disabled by default. When enabled:
 
-- Data is synchronized, except Adservio and Schulmanager, with Firebase Firestore under the collection path `users/{uid}/data/{category}/items/{itemId}`.
+- Data is synchronized with Firebase Firestore under the collection path `users/{uid}/data/{category}/items/{itemId}`. Adservio and Schulmanager data is never sent to Firebase.
 - **All data is encrypted client-side** using AES-256 (via crypto-js) with a Master Key derived from your PIN before it leaves your device.
 - The Master Key itself is encrypted with your PIN (SHA-256 of PIN as AES key) and backed up to your Firestore document for recovery.
 - Settings (excluding deviceId and integration credentials) are also synced when cloud sync is enabled.

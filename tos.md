@@ -10,9 +10,9 @@ By downloading, installing, or using UniPlan ("the App"), you agree to be bound 
 
 UniPlan is an academic planning application that helps students manage their class schedule, homework, and to-do items. The App may also integrate with third-party school platforms (Schulmanager, Adservio) and your device's calendar to display events alongside your academic schedule.
 
-## 5. Account Registration
+## 3. Account Registration
 
-### 5.1 Account Creation
+### 3.1 Account Creation
 
 Some features of UniPlan (such as cloud sync) require you to create an account. You agree to:
 
@@ -20,11 +20,11 @@ Some features of UniPlan (such as cloud sync) require you to create an account. 
 - Keep your password and PIN secure and confidential
 - Not share your account credentials with others
 
-### 5.2 Account Security
+### 3.2 Account Security
 
 You are responsible for all activity that occurs under your account. Notify dStudios immediately if you suspect any unauthorized use of your account.
 
-## 6. User Responsibilities
+## 4. User Responsibilities
 
 You agree not to:
 
@@ -35,7 +35,7 @@ You agree not to:
 - Use the App to store or transmit malicious code or content
 - Use the App in any way that could harm minors or exploit students
 
-## 7. Data Privacy
+## 5. Data Privacy
 
 Your privacy is important to us. Please refer to our [Privacy Policy](https://uniplan.dstudios.org/privacy) for information on how we collect, use, and protect your data.
 
@@ -47,7 +47,7 @@ Key privacy highlights:
 - **No data selling**: We do not sell your personal information to third parties
 - **School data privacy**: Your Schulmanager and Adservio credentials and data stay on your device
 
-## 7. Third-Party Services
+## 6. Third-Party Services
 
 UniPlan integrates with several third-party services:
 
@@ -61,7 +61,7 @@ UniPlan integrates with several third-party services:
 
 These third-party services have their own terms and privacy policies. dStudios is not responsible for the practices of these services.
 
-## 8. Cloud Sync
+## 7. Cloud Sync
 
 Cloud sync is an optional feature. When enabled:
 
@@ -71,15 +71,15 @@ Cloud sync is an optional feature. When enabled:
 - dStudios can access your encrypted data in encrypted form without the possibility to decrypt it
 - If you lose your PIN, encrypted cloud data may become unrecoverable
 
-## 9. Intellectual Property
+## 8. Intellectual Property
 
 The App, including its code, design, branding, and content, is the property of dStudios and is protected by applicable intellectual property laws. You are granted a limited, non-exclusive, non-transferable license to use the App for personal, non-commercial purposes.
 
-## 10. Limitation of Liability
+## 9. Limitation of Liability
 
 To the maximum extent permitted by law, dStudios shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of the App. This includes, but is not limited to, loss of data, academic schedule conflicts, missed assignments, or any academic consequences resulting from the use or inability to use the App.
 
-## 11. Disclaimer of Warranties
+## 10. Disclaimer of Warranties
 
 The App is provided "as is" and "as available" without warranties of any kind, either express or implied. dStudios does not guarantee that:
 
@@ -88,20 +88,20 @@ The App is provided "as is" and "as available" without warranties of any kind, e
 - Third-party integrations (Schulmanager, Adservio) will function without interruption
 - Data will not be lost or corrupted
 
-## 12. Termination
+## 11. Termination
 
 dStudios reserves the right to suspend or terminate your account for the App at any time, without prior notice, for conduct that violates these Terms or is harmful to other users, third parties, or dStudios.
 
 You may stop using the App at any time. You may delete your account and associated data through the App's settings.
 
-## 13. Changes to These Terms
+## 12. Changes to These Terms
 
 We may update these Terms from time to time. Changes will be posted on this page. Continued use of the App after changes constitutes acceptance of the new Terms.
 
-## 14. Governing Law
+## 13. Governing Law
 
 These Terms shall be governed by and construed in accordance with the laws of Romania, without regard to its conflict of law provisions.
 
-## 15. Contact
+## 14. Contact
 
 If you have questions about these Terms, please open an issue at [github.com/dStudios-735453/UniPlan-Releases](https://github.com/dStudios-735453/UniPlan-Releases) or contact dStudios via email at david@dstudios.org.

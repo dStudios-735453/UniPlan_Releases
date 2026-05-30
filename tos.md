@@ -104,4 +104,4 @@ These Terms shall be governed by and construed in accordance with the laws of Ro
 
 ## 15. Contact
 
-If you have questions about these Terms, please open an issue at [github.com/dStudios-735453/UniPlan](https://github.com/dStudios-735453/UniPlan) or contact dStudios via email at david@dstudios.org.
+If you have questions about these Terms, please open an issue at [github.com/dStudios-735453/UniPlan-Releases](https://github.com/dStudios-735453/UniPlan-Releases) or contact dStudios via email at david@dstudios.org.

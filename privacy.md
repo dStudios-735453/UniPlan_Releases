@@ -115,4 +115,4 @@ We may update this Privacy Policy from time to time. Changes will be posted on t
 
 ## 9. CONTACT
 
-If you have questions about this Privacy Policy, please open an issue at [github.com/dStudios-735453/UniPlan](https://github.com/dStudios-735453/UniPlan) or contact dStudios per email at david@dstudios.org.
+If you have questions about this Privacy Policy, please open an issue at [github.com/dStudios-735453/UniPlan](https://github.com/dStudios-735453/UniPlan) or contact dStudios via email at david@dstudios.org.

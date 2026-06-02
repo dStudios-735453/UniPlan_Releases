@@ -75,26 +75,23 @@ jobs:
         working-directory: source
         run: npm install
 
-      - name: Setup Expo
+      - name: Setup Expo and EAS
         if: matrix.build_flag == 'true'
         uses: expo/expo-github-action@v8
         with:
           expo-version: latest
           eas-cache: true
+          token: ${{ secrets.EXPO_TOKEN }}
 
       - name: Setup Gradle
         if: matrix.platform == 'android' && matrix.build_flag == 'true'
         uses: gradle/actions/setup-gradle@v6
 
-      - name: Build Android (Unsigned APK)
+      - name: Build Android
         if: matrix.platform == 'android' && matrix.build_flag == 'true'
         working-directory: source
         shell: bash
-        run: |
-          npx expo prebuild --platform android
-          cd android
-          chmod +x ./gradlew
-          ./gradlew assembleRelease
+        run: eas build --platform android --profile production --local --non-interactive
 
       - name: Prepare xcode
         if: matrix.platform == 'ios' && matrix.build_flag == 'true'
@@ -109,21 +106,14 @@ jobs:
           echo "not working"
           exit 1
 
-      - name: Package iOS App
-        if: matrix.platform == 'ios' && matrix.build_flag == 'true'
-        working-directory: source
-        run: |
-          mkdir -p Payload
-          cp -r build/UniPlan.xcarchive/Products/Applications/UniPlan.app Payload/
-          zip -r UniPlan-unsigned.ipa Payload
-          rm -rf Payload
-
       - name: Upload Android Artifact
         if: matrix.platform == 'android' && matrix.build_flag == 'true'
         uses: actions/upload-artifact@v7
         with:
           name: mobile-build-android
-          path: source/android/app/build/outputs/apk/release/*.apk
+          path: |
+            source/*.aab
+            source/*.apk
           retention-days: 2
 
       - name: Upload iOS Artifact
@@ -152,18 +142,8 @@ jobs:
           draft: false
           prerelease: true
           files: |
-            artifacts/**/*.msi
-            artifacts/**/*.msi.sig
-            artifacts/**/*.exe
-            artifacts/**/*.exe.sig
-            artifacts/**/*.dmg
-            artifacts/**/*.app.tar.gz
-            artifacts/**/*.app.tar.gz.sig
-            artifacts/**/*.AppImage
-            artifacts/**/*.AppImage.sig
-            artifacts/**/*.deb
-            artifacts/**/*.rpm
             artifacts/**/*.apk
+            artifacts/**/*.aab
             artifacts/**/*.ipa
         env:
           GITHUB_TOKEN: ${{ github.token }}

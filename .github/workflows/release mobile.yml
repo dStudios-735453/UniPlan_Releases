@@ -81,7 +81,9 @@ jobs:
         with:
           expo-version: latest
           eas-cache: true
+          expo-cache: true
           token: ${{ secrets.EXPO_TOKEN }}
+          packager: npm
 
       - name: Setup Gradle
         if: matrix.platform == 'android' && matrix.build_flag == 'true'

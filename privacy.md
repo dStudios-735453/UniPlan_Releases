@@ -19,7 +19,7 @@ UniPlan stores the following data locally on your device and, if you enable clou
 
 - **Calendar Events**: With your permission, UniPlan reads events from your device's calendar to display them alongside your schedule. On iOS this is read-only access. Event titles and locations may be synced to Firestore in encrypted form if cloud sync is enabled.
 - **Analytics Events**: UniPlan uses Firebase Analytics to collect anonymous usage data, including screen views, user engagement, and specific actions (adding, editing, or deleting schedule items, homework, and todos). No personally identifiable data is included — only event names and basic engagement metrics. Ad ID collection is disabled.
-- **Error and Performance Data**: UniPlan uses Sentry (sentry.io) to collect error reports, performance traces, and session replay data (on mobile). This includes device model, OS version, stack traces, and navigation timing. IP addresses may be collected. Sentry data is used solely to improve app stability and performance.
+- **Error and Performance Data**: UniPlan uses Sentry (sentry.io) to collect error reports, performance traces, and session replay data. On mobile, this captures native screen recordings; on desktop/web, it captures page interactions (clicks, scrolls, navigation). Data includes device model, OS version, stack traces, and navigation timing. IP addresses may be collected. Sentry data is used solely to improve app stability and performance.
 - **Device Information**: The app generates a random device ID for calendar sync coordination. No personal device identifiers (IMEI, serial numbers, etc.) are collected.
 
 ### 1.3 In-App Purchase Data

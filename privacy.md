@@ -66,18 +66,18 @@ With your permission:
 
 ## 3. THIRD-PARTY SERVICES
 
-| Service                                | Purpose                                                     | Data Shared                                                                   |
-| -------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| **Firebase (Google)**                  | Authentication, Cloud Firestore, Cloud Functions, Analytics | Email, authentication tokens, encrypted user data, anonymous analytics events |
-| **Google/Apple Sign-In**               | Account creation and login                                  | Email address, profile information (name, avatar URL)                         |
-| **Google reCAPTCHA**                   | Bot protection during login/registration                    | Browser behavior signals (anonymous)                                          |
-| **OpenHolidays API**                   | Fetching school and public holiday data                     | Country and subdivision selections                                            |
-| **Schulmanager Online**                | German school management integration                        | Your Schulmanager credentials and fetched schedule data                       |
-| **Adservio**                           | Romanian school management integration                      | Your Adservio credentials and fetched grade/absence data                      |
-| **Flag CDN (flagcdn.com)**             | Country flag images in settings                             | None (public image requests)                                                  |
-| **GitHub (raw.githubusercontent.com)** | Desktop app update checks                                   | None (anonymous GET requests to check version)                                |
+| Service                                | Purpose                                                     | Data Shared                                                                           |
+| -------------------------------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| **Firebase (Google)**                  | Authentication, Cloud Firestore, Cloud Functions, Analytics | Email, authentication tokens, encrypted user data, anonymous analytics events         |
+| **Google/Apple Sign-In**               | Account creation and login                                  | Email address, profile information (name, avatar URL)                                 |
+| **Google reCAPTCHA**                   | Bot protection during login/registration                    | Browser behavior signals (anonymous)                                                  |
+| **OpenHolidays API**                   | Fetching school and public holiday data                     | Country and subdivision selections                                                    |
+| **Schulmanager Online**                | German school management integration                        | Your Schulmanager credentials and fetched schedule data                               |
+| **Adservio**                           | Romanian school management integration                      | Your Adservio credentials and fetched grade/absence data                              |
+| **Flag CDN (flagcdn.com)**             | Country flag images in settings                             | None (public image requests)                                                          |
+| **GitHub (raw.githubusercontent.com)** | Desktop app update checks                                   | None (anonymous GET requests to check version)                                        |
 | **Sentry (sentry.io)**                 | Error tracking and performance monitoring                   | Device information, OS version, stack traces, navigation performance data, IP address |
-| **RevenueCat (revenuecat.com)**        | In-app purchase and subscription management                 | App User ID, purchase receipts, transaction identifiers, subscription status   |
+| **RevenueCat (revenuecat.com)**        | In-app purchase and subscription management                 | App User ID, purchase receipts, transaction identifiers, subscription status          |
 
 ## 4. DATA RETENTION AND DELETION
 
@@ -126,4 +126,4 @@ We may update this Privacy Policy from time to time. Changes will be posted on t
 
 ## 9. CONTACT
 
-If you have questions about this Privacy Policy, please open an issue at [github.com/dStudios-735453/UniPlan](https://github.com/dStudios-735453/UniPlan) or contact dStudios via email at david@dstudios.org.
+If you have questions about this Privacy Policy, please open an issue at [github.com/dStudios-735453/UniPlan_Releases](https://github.com/dStudios-735453/UniPlan_Releases) or contact dStudios via email at david@dstudios.org.

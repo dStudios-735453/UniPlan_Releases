@@ -1,6 +1,6 @@
 # Terms of Service
 
-**Last updated: May 30, 2026**
+**Last updated: June 2, 2026**
 
 ## 1. Acceptance of Terms
 
@@ -51,13 +51,15 @@ Key privacy highlights:
 
 UniPlan integrates with several third-party services:
 
-| Service              | Purpose                                  |
-| -------------------- | ---------------------------------------- |
-| Firebase (Google)    | Authentication, cloud storage, analytics |
-| Schulmanager Online  | German school platform integration       |
-| Adservio             | Romanian school platform integration     |
-| OpenHolidays API     | Public holiday data                      |
-| Google/Apple Sign-In | Account creation                         |
+| Service                 | Purpose                                           |
+| ----------------------- | ------------------------------------------------- |
+| Firebase (Google)       | Authentication, cloud storage, analytics          |
+| Sentry (sentry.io)      | Error tracking and performance monitoring         |
+| RevenueCat              | In-app purchase and subscription management       |
+| Schulmanager Online     | German school platform integration                |
+| Adservio                | Romanian school platform integration              |
+| OpenHolidays API        | Public holiday data                               |
+| Google/Apple Sign-In    | Account creation                                  |
 
 These third-party services have their own terms and privacy policies. dStudios is not responsible for the practices of these services.
 
@@ -71,15 +73,45 @@ Cloud sync is an optional feature. When enabled:
 - dStudios can access your encrypted data in encrypted form without the possibility to decrypt it
 - If you lose your PIN, encrypted cloud data may become unrecoverable
 
-## 8. Intellectual Property
+## 8. In-App Purchases and Premium Features
+
+### 8.1 Premium Subscription
+
+UniPlan offers optional premium features through in-app purchases, including a monthly subscription, an annual subscription, and a lifetime purchase ("Premium"). Premium features may include but are not limited to ad-free experience, advanced customization, and priority support.
+
+### 8.2 Payments and Billing
+
+- All payments are processed through the Apple App Store (iOS) or Google Play Store (Android). UniPlan does not process or store any payment information.
+- Subscription prices are displayed at the time of purchase and may vary by region.
+- Prices are subject to change; any price changes will be communicated in advance and will apply to the next billing period.
+
+### 8.3 Auto-Renewal and Cancellation
+
+- Subscriptions automatically renew unless auto-renewal is turned off at least 24 hours before the end of the current period.
+- You can manage and cancel subscriptions through your App Store/Play Store account settings.
+- Cancellation takes effect at the end of the current billing period. No refunds are provided for partial periods.
+
+### 8.4 Restoring Purchases
+
+Purchases can be restored across devices signed into the same app store account. Previous purchases cannot be reinstated if an account is deleted and re-created without restoring.
+
+### 8.5 No Refunds
+
+Refunds are handled exclusively by the app store platform (Apple or Google) in accordance with their refund policies. UniPlan does not issue refunds directly.
+
+### 8.6 Feature Changes
+
+dStudios reserves the right to modify, add, or remove Premium features at any time. Significant changes will be communicated through the app or via email.
+
+## 9. Intellectual Property
 
 The App, including its code, design, branding, and content, is the property of dStudios and is protected by applicable intellectual property laws. You are granted a limited, non-exclusive, non-transferable license to use the App for personal, non-commercial purposes.
 
-## 9. Limitation of Liability
+## 10. Limitation of Liability
 
 To the maximum extent permitted by law, dStudios shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of the App. This includes, but is not limited to, loss of data, academic schedule conflicts, missed assignments, or any academic consequences resulting from the use or inability to use the App.
 
-## 10. Disclaimer of Warranties
+## 11. Disclaimer of Warranties
 
 The App is provided "as is" and "as available" without warranties of any kind, either express or implied. dStudios does not guarantee that:
 
@@ -88,20 +120,20 @@ The App is provided "as is" and "as available" without warranties of any kind, e
 - Third-party integrations (Schulmanager, Adservio) will function without interruption
 - Data will not be lost or corrupted
 
-## 11. Termination
+## 12. Termination
 
 dStudios reserves the right to suspend or terminate your account for the App at any time, without prior notice, for conduct that violates these Terms or is harmful to other users, third parties, or dStudios.
 
 You may stop using the App at any time. You may delete your account and associated data through the App's settings.
 
-## 12. Changes to These Terms
+## 13. Changes to These Terms
 
 We may update these Terms from time to time. Changes will be posted on this page. Continued use of the App after changes constitutes acceptance of the new Terms.
 
-## 13. Governing Law
+## 14. Governing Law
 
 These Terms shall be governed by and construed in accordance with the laws of Romania, without regard to its conflict of law provisions.
 
-## 14. Contact
+## 15. Contact
 
 If you have questions about these Terms, please open an issue at [github.com/dStudios-735453/UniPlan-Releases](https://github.com/dStudios-735453/UniPlan-Releases) or contact dStudios via email at david@dstudios.org.

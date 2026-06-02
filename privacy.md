@@ -1,6 +1,6 @@
 # Privacy Policy
 
-**Last updated: May 29, 2026**
+**Last updated: June 2, 2026**
 
 ## 1. DATA UniPlan COLLECTS AND STORES
 
@@ -19,9 +19,18 @@ UniPlan stores the following data locally on your device and, if you enable clou
 
 - **Calendar Events**: With your permission, UniPlan reads events from your device's calendar to display them alongside your schedule. On iOS this is read-only access. Event titles and locations may be synced to Firestore in encrypted form if cloud sync is enabled.
 - **Analytics Events**: UniPlan uses Firebase Analytics to collect anonymous usage data, including screen views, user engagement, and specific actions (adding, editing, or deleting schedule items, homework, and todos). No personally identifiable data is included — only event names and basic engagement metrics. Ad ID collection is disabled.
+- **Error and Performance Data**: UniPlan uses Sentry (sentry.io) to collect error reports, performance traces, and session replay data (on mobile). This includes device model, OS version, stack traces, and navigation timing. IP addresses may be collected. Sentry data is used solely to improve app stability and performance.
 - **Device Information**: The app generates a random device ID for calendar sync coordination. No personal device identifiers (IMEI, serial numbers, etc.) are collected.
 
-### 1.3 School Integration Data
+### 1.3 In-App Purchase Data
+
+If you purchase a premium subscription or lifetime access:
+
+- **Purchase Information**: When you make a purchase, the transaction is processed by the platform's app store (Apple App Store or Google Play Store). UniPlan uses RevenueCat to manage and verify subscriptions. RevenueCat receives your app user ID, purchase receipts, and subscription status.
+- **Subscription Status**: Your subscription status (active/inactive, plan tier, expiration date) is stored locally and, if signed in, associated with your Firebase account via custom claims for cross-device sync.
+- **No Payment Data**: UniPlan does not collect, store, or process credit card numbers or other payment information. All payment processing is handled by the app store platform.
+
+### 1.4 School Integration Data
 
 If you connect third-party school platforms:
 
@@ -67,6 +76,8 @@ With your permission:
 | **Adservio**                           | Romanian school management integration                      | Your Adservio credentials and fetched grade/absence data                      |
 | **Flag CDN (flagcdn.com)**             | Country flag images in settings                             | None (public image requests)                                                  |
 | **GitHub (raw.githubusercontent.com)** | Desktop app update checks                                   | None (anonymous GET requests to check version)                                |
+| **Sentry (sentry.io)**                 | Error tracking and performance monitoring                   | Device information, OS version, stack traces, navigation performance data, IP address |
+| **RevenueCat (revenuecat.com)**        | In-app purchase and subscription management                 | App User ID, purchase receipts, transaction identifiers, subscription status   |
 
 ## 4. DATA RETENTION AND DELETION
 

@@ -7,10 +7,24 @@ on:
         description: "Build Android APK"
         type: boolean
         default: false
+      android_build_type:
+        description: "Android build profile"
+        type: choice
+        options:
+          - production
+          - development
+        default: development
       build_ios:
         description: "Build iOS IPA"
         type: boolean
         default: false
+      ios_build_type:
+        description: "iOS build profile"
+        type: choice
+        options:
+          - production
+          - development
+        default: development
 
 jobs:
   prepare:
@@ -27,12 +41,15 @@ jobs:
 
           RELEASE_TITLE="${DATE_TIME}"
           TAG_NAME="v${DATE_TIME}"
+          ANDROID_TYPE="${{ github.event.inputs.android_build_type }}"
+          IOS_TYPE="${{ github.event.inputs.ios_build_type }}"
+
           if [ "${{ github.event.inputs.build_android }}" == "true" ]; then
-            VERSION="${DATE_TIME}_android"
+            VERSION="${DATE_TIME}_android:${ANDROID_TYPE}"
           elif [ "${{ github.event.inputs.build_ios }}" == "true" ]; then
-            VERSION="${DATE_TIME}_iOS"
+            VERSION="${DATE_TIME}_iOS:${IOS_TYPE}"
           else
-            VERSION="${DATE_TIME}_mobile"
+            VERSION="${DATE_TIME}_mobile_iOS:${IOS_TYPE}_android:${ANDROID_TYPE}"
           fi
 
           echo "version=$VERSION" >> $GITHUB_OUTPUT
@@ -100,7 +117,8 @@ jobs:
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
-        run: npx eas build --platform android --profile production --local --non-interactive
+          ANDROID_PROFILE: ${{ github.event.inputs.android_build_type }}
+        run: npx eas build --platform android --profile "${ANDROID_PROFILE}" --local --non-interactive
 
       - name: Prepare xcode
         if: matrix.platform == 'ios' && matrix.build_flag == 'true'
@@ -111,6 +129,10 @@ jobs:
       - name: Build iOS
         if: matrix.platform == 'ios' && matrix.build_flag == 'true'
         working-directory: source
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          IOS_PROFILE: ${{ github.event.inputs.ios_build_type }}
         run: |
           echo "not working"
           exit 1
@@ -123,6 +145,7 @@ jobs:
           path: |
             source/*.aab
             source/*.apk
+            source/android/app/build/outputs/mapping/release/mapping.txt
           retention-days: 2
 
       - name: Upload iOS Artifact
@@ -130,7 +153,7 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: mobile-build-ios
-          path: source/UniPlan-unsigned.ipa
+          path: source/*.ipa
           retention-days: 2
 
   create-release:
@@ -154,5 +177,6 @@ jobs:
             artifacts/**/*.apk
             artifacts/**/*.aab
             artifacts/**/*.ipa
+            artifacts/**/mapping.txt
         env:
           GITHUB_TOKEN: ${{ github.token }}

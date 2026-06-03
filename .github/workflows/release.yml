@@ -270,6 +270,7 @@ jobs:
           path: |
             source/*.aab
             source/*.apk
+            source/android/app/build/outputs/mapping/release/mapping.txt
           retention-days: 2
 
       - name: Upload iOS Artifact
@@ -277,7 +278,7 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: mobile-build-ios
-          path: source/UniPlan-unsigned.ipa
+          path: source/*.ipa
           retention-days: 2
 
   create-release:
@@ -330,6 +331,7 @@ jobs:
             artifacts/**/*.apk
             artifacts/**/*.aab
             artifacts/**/*.ipa
+            artifacts/**/mapping.txt
         env:
           GITHUB_TOKEN: ${{ github.token }}
 

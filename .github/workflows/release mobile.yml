@@ -94,17 +94,13 @@ jobs:
 
       - name: Setup Expo and EAS
         if: matrix.build_flag == 'true'
-        uses: expo/expo-github-action@v8
+        uses: expo/expo-github-action@v9
         with:
           expo-version: latest
+          eas-version: latest
           eas-cache: true
-          expo-cache: true
           token: ${{ secrets.EXPO_TOKEN }}
           packager: npm
-
-      - name: Install EAS CLI
-        if: matrix.build_flag == 'true'
-        run: npm install -g eas-cli
 
       - name: Setup Gradle
         if: matrix.platform == 'android' && matrix.build_flag == 'true'

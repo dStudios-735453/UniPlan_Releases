@@ -1,6 +1,6 @@
 # Privacy Policy
 
-**Last updated: June 2, 2026**
+**Last updated: June 5, 2026**
 
 ## 1. DATA UniPlan COLLECTS AND STORES
 
@@ -8,7 +8,7 @@
 
 UniPlan stores the following data locally on your device and, if you enable cloud sync, on Firebase Firestore:
 
-- **Account Information**: If you create an account, Firebase stores your email address and a salted hash of your password (via Firebase Authentication). You may also sign in with Google or Apple, in which case Firebase receives your email address and profile information from Google or Apple.
+- **Account Information**: If you create an account, Firebase stores your email address and a salted hash of your password (via Firebase Authentication). You may also sign in with Google or Apple, in which case Firebase receives your email address and profile information from Google or Apple. On iOS, Apple Sign-In uses the native `expo-apple-authentication` API. On Android, Web, and Desktop, Sign-In with Apple and Google are handled via a Cloudflare Worker OAuth proxy (`auth-proxy.dstudios.org`), which relays the authorization response to the app without storing or logging any data.
 - **Class Schedule**: Class names, times, locations, teachers, room numbers, colors, recurrence patterns, and daily notes you create (encrypted with aes-256 on Firestore, sent only with sync on).
 - **Homework & Todo Items**: Assignment descriptions, due dates, due times, checklist items, page numbers, completion status, pinned status, and notification settings (encrypted with aes-256 on Firestore, sent only with sync on).
 - **App Settings**: Theme preferences, tab order, language selection (English/German/Romanian), default lesson/break durations, subject and teacher presets, autofill configurations, manual holidays, and vacation mode settings (encrypted with aes-256 on Firestore, sent only with sync on).
@@ -70,6 +70,7 @@ With your permission:
 | -------------------------------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------------- |
 | **Firebase (Google)**                  | Authentication, Cloud Firestore, Cloud Functions, Analytics | Email, authentication tokens, encrypted user data, anonymous analytics events         |
 | **Google/Apple Sign-In**               | Account creation and login                                  | Email address, profile information (name, avatar URL)                                 |
+| **Cloudflare Worker (auth-proxy.dstudios.org)** | OAuth redirect proxy for Apple and Google Sign-In on non-iOS platforms | OAuth authorization codes and ID tokens (transiently, never stored or logged)          |
 | **Google reCAPTCHA**                   | Bot protection during login/registration                    | Browser behavior signals (anonymous)                                                  |
 | **OpenHolidays API**                   | Fetching school and public holiday data                     | Country and subdivision selections                                                    |
 | **Schulmanager Online**                | German school management integration                        | Your Schulmanager credentials and fetched schedule data                               |

@@ -140,13 +140,14 @@ jobs:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
           IOS_PROFILE: ${{ github.event.inputs.ios_build_type }}
-        run: eas build --platform ios --profile development --local --non-interactive
+        run: eas build --platform ios --profile development --local --non-interactive --output="ios-development.ipa"
 
       - name: Upload to Diawi
+        if: matrix.platform == 'ios' && matrix.build_flag == 'true' && github.event.inputs.ios_build_type == 'development'
         uses: rnkdsh/action-upload-diawi@v1.5.12
         with:
           token: ${{ secrets.DIAWI_TOKEN }}
-          file: "path/to/your/app-release.apk"
+          file: "source/ios-development.ipa"
 
       - name: Upload Android Artifact
         if: matrix.platform == 'android' && matrix.build_flag == 'true'

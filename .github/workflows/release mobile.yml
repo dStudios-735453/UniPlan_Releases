@@ -124,7 +124,7 @@ jobs:
         if: matrix.platform == 'ios' && matrix.build_flag == 'true'
         uses: maxim-lobanov/setup-xcode@v1
         with:
-          xcode-version: "26.5"
+          xcode-version: latest-stable
 
       - name: Build iOS Production
         if: matrix.platform == 'ios' && matrix.build_flag == 'true' && github.event.inputs.ios_build_type == 'production'

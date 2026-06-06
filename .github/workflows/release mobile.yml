@@ -130,7 +130,7 @@ jobs:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
           IOS_PROFILE: ${{ github.event.inputs.ios_build_type }}
-        run: npx eas build --platform ios --profile production --local --non-interactive --auto-submit
+        run: eas build --platform ios --profile production --local --non-interactive --auto-submit
 
       - name: Build iOS Development
         if: matrix.platform == 'ios' && matrix.build_flag == 'true' && github.event.inputs.ios_build_type == 'development'
@@ -140,7 +140,13 @@ jobs:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
           IOS_PROFILE: ${{ github.event.inputs.ios_build_type }}
-        run: npx eas build --platform ios --profile development --local --non-interactive
+        run: eas build --platform ios --profile development --local --non-interactive
+
+      - name: Upload to Diawi
+        uses: rnkdsh/action-upload-diawi@v1.5.12
+        with:
+          token: ${{ secrets.DIAWI_TOKEN }}
+          file: "path/to/your/app-release.apk"
 
       - name: Upload Android Artifact
         if: matrix.platform == 'android' && matrix.build_flag == 'true'

@@ -243,7 +243,7 @@ jobs:
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
-        run: npx eas build --platform android --profile production --local --non-interactive
+        run: eas build --platform android --profile production --local --non-interactive
 
       - name: Prepare xcode
         if: matrix.platform == 'ios' && matrix.build_flag == 'true'

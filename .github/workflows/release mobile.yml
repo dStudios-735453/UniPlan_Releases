@@ -129,13 +129,12 @@ jobs:
       - name: Build iOS
         if: matrix.platform == 'ios' && matrix.build_flag == 'true'
         working-directory: source
+        shell: bash
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
           IOS_PROFILE: ${{ github.event.inputs.ios_build_type }}
-        run: |
-          echo "not working"
-          exit 1
+        run: npx eas build --platform ios --profile "${IOS_PROFILE}" --local --non-interactive --auto-submit
 
       - name: Upload Android Artifact
         if: matrix.platform == 'android' && matrix.build_flag == 'true'

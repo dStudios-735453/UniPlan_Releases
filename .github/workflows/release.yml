@@ -258,9 +258,11 @@ jobs:
       - name: Build iOS
         if: matrix.platform == 'ios' && matrix.build_flag == 'true'
         working-directory: source
-        run: |
-          echo "not working"
-          exit 1
+        shell: bash
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+        run: npx eas build --platform ios --profile production --local --non-interactive --auto-submit
 
       - name: Upload Android Artifact
         if: matrix.platform == 'android' && matrix.build_flag == 'true'

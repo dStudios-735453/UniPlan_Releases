@@ -1,0 +1,39 @@
+# Template file for 'uniplan'
+pkgname=uniplan
+version=0.0.1
+revision=1
+build_style=meta
+hostmakedepends="binutils"
+short_desc="All-in-one academic planner for students"
+maintainer="David_735453 <david@dstudios.org>"
+license="custom:Proprietary"
+homepage="https://uniplan.dstudios.org"
+distfiles="https://github.com/dStudios-735453/UniPlan_Releases/releases/download/v20.05.2026-1728_linux/Uniplan_${version}_${deb_suffix}.deb"
+checksum=b1bcf9ad3a49b2cd7d066acbf97725ca579a422d3ca6189300559f4672c50978
+nostrip=yes
+nopie=yes
+repository=nonfree
+depends="gtk+3 libwebkit2gtk41 libayatana-appindicator librsvg"
+
+case "${XBPS_TARGET_MACHINE}" in
+	aarch64*)
+		deb_suffix="arm64"
+		distfiles="https://github.com/x"
+		checksum="x"
+		;;
+	*)
+		deb_suffix="amd64"
+		;;
+esac
+
+do_install() {
+	cp ${XBPS_SRCDISTDIR}/${pkgname}-${version}/Uniplan_0.0.1_${deb_suffix}.deb .
+	ar x Uniplan_0.0.1_${_deb_suffix}.deb
+	tar xf data.tar.*
+
+	vbin usr/bin/uniplan
+	vinstall ${FILESDIR}/uniplan.desktop 644 usr/share/applications/
+	vinstall ${FILESDIR}/uniplan.png 644 usr/share/icons/hicolor/512x512/apps/
+	vinstall ${FILESDIR}/uniplan.metainfo.xml 644 usr/share/metainfo/
+	vlicense ${FILESDIR}/LICENSE uniplan
+}

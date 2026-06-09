@@ -3,7 +3,12 @@
 	url = https://github.com/dStudios-735453/winget-pkgs
 	branch = master
 
-[submodule "Scoop_Extras"]
+[submodule "scoop_extras"]
 	path = pkg_mgr\\windows\\scoop
-	url = https://github.com/dStudios-735453/Scoop_Extras
+	url = https://github.com/dStudios-735453/scoop_extras
+	branch = master
+
+[submodule "void-packages"]
+	path = pkg_mgr\\linux\\void
+	url = https://github.com/dStudios-735453/void-packages
 	branch = master

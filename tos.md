@@ -1,6 +1,6 @@
 # Terms of Service
 
-**Last updated: June 2, 2026**
+**Last updated: June 9, 2026**
 
 ## 1. Acceptance of Terms
 
@@ -51,15 +51,15 @@ Key privacy highlights:
 
 UniPlan integrates with several third-party services:
 
-| Service                 | Purpose                                           |
-| ----------------------- | ------------------------------------------------- |
-| Firebase (Google)       | Authentication, cloud storage, analytics          |
-| Sentry (sentry.io)      | Error tracking and performance monitoring         |
-| RevenueCat              | In-app purchase and subscription management       |
-| Schulmanager Online     | German school platform integration                |
-| Adservio                | Romanian school platform integration              |
-| OpenHolidays API        | Public holiday data                               |
-| Google/Apple Sign-In    | Account creation                                  |
+| Service              | Purpose                                     |
+| -------------------- | ------------------------------------------- |
+| Firebase (Google)    | Authentication, cloud storage, analytics    |
+| Sentry (sentry.io)   | Error tracking and performance monitoring   |
+| RevenueCat           | In-app purchase and subscription management |
+| Schulmanager Online  | German school platform integration          |
+| Adservio             | Romanian school platform integration        |
+| OpenHolidays API     | Public holiday data                         |
+| Google/Apple Sign-In | Account creation                            |
 
 These third-party services have their own terms and privacy policies. dStudios is not responsible for the practices of these services.
 

@@ -1,26 +1,26 @@
 {
-  "version": "0.0.1",
-  "pub_date": "2026-05-17T10:41:00Z",
-  "platforms": {
-    "windows-x86_64": {
-      "signature": "ENDWejCsKav/FlGEzBL+YJfb9I4gZZoe/2rHEKDhslyZUh9hkfsXLPhWHNSutI3X352tGYDt/esTnMW0pJWvBg==",
-      "url": "https://github.com/dStudios-735453/UniPlan_Releases/releases/download/v17.05.2026-1009/UniPlan_0.0.1_x64-setup.exe"
-    },
-    "windows-aarch64": {
-      "signature": "6MVt0avBYWUtPhuJI6yZ7jqJy6I2E5Gvn76+MaKlq4gRbNX8zYBfQ3rnx6LVe/TsCOvxTMmH/z1UfHzw46lMBA==",
-      "url": "https://github.com/dStudios-735453/UniPlan_Releases/releases/download/v17.05.2026-1009/UniPlan_0.0.1_arm64-setup.exe"
-    },
-    "darwin-universal": {
-      "signature": "Bol5SSJ62QVrQ2nNZeq3KT0YgUj5FFWSofkp+cIe+9XogT6//6gtTsq33q8GBubjTIonYPF87NOpRApzvGO0Cg==",
-      "url": "https://github.com/dStudios-735453/UniPlan_Releases/releases/download/v17.05.2026-1009/UniPlan.app.tar.gz"
-    },
-    "linux-x86_64": {
-      "signature": "8kncQwMN/DCwJWfOvMNjuLPf5/7hqhjLAaxtWKLuKP0NvGREvLU5NDMK66mrDpjFpfgANSuzqIOc20MuVs7+Aw==",
-      "url": "https://github.com/dStudios-735453/UniPlan_Releases/releases/download/v17.05.2026-1009/UniPlan_0.0.1_amd64.AppImage"
-    },
-    "linux-aarch64": {
-      "signature": "CAeYgclgtiPeVsEwSLr4bMHzCMjNJPBxKG6ioLyFI121IyUwbd6whtCOtnnRwcf+LoDAYDfVFuoh6/EbsDTOBA==",
-      "url": "https://github.com/dStudios-735453/UniPlan_Releases/releases/download/v17.05.2026-1009/UniPlan_0.0.1_aarch64.AppImage"
-    }
-  }
+	"version": "0.0.1",
+	"pub_date": "2026-05-17T10:41:00Z",
+	"platforms": {
+		"windows-x86_64": {
+			"signature": "ENDWejCsKav/FlGEzBL+YJfb9I4gZZoe/2rHEKDhslyZUh9hkfsXLPhWHNSutI3X352tGYDt/esTnMW0pJWvBg==",
+			"url": "https://github.com/dStudios-735453/UniPlan_Releases/releases/download/v17.05.2026-1009/UniPlan_0.0.1_x64-setup.exe"
+		},
+		"windows-aarch64": {
+			"signature": "6MVt0avBYWUtPhuJI6yZ7jqJy6I2E5Gvn76+MaKlq4gRbNX8zYBfQ3rnx6LVe/TsCOvxTMmH/z1UfHzw46lMBA==",
+			"url": "https://github.com/dStudios-735453/UniPlan_Releases/releases/download/v17.05.2026-1009/UniPlan_0.0.1_arm64-setup.exe"
+		},
+		"darwin-universal": {
+			"signature": "Bol5SSJ62QVrQ2nNZeq3KT0YgUj5FFWSofkp+cIe+9XogT6//6gtTsq33q8GBubjTIonYPF87NOpRApzvGO0Cg==",
+			"url": "https://github.com/dStudios-735453/UniPlan_Releases/releases/download/v17.05.2026-1009/UniPlan.app.tar.gz"
+		},
+		"linux-x86_64": {
+			"signature": "8kncQwMN/DCwJWfOvMNjuLPf5/7hqhjLAaxtWKLuKP0NvGREvLU5NDMK66mrDpjFpfgANSuzqIOc20MuVs7+Aw==",
+			"url": "https://github.com/dStudios-735453/UniPlan_Releases/releases/download/v17.05.2026-1009/UniPlan_0.0.1_amd64.AppImage"
+		},
+		"linux-aarch64": {
+			"signature": "CAeYgclgtiPeVsEwSLr4bMHzCMjNJPBxKG6ioLyFI121IyUwbd6whtCOtnnRwcf+LoDAYDfVFuoh6/EbsDTOBA==",
+			"url": "https://github.com/dStudios-735453/UniPlan_Releases/releases/download/v17.05.2026-1009/UniPlan_0.0.1_aarch64.AppImage"
+		}
+	}
 }

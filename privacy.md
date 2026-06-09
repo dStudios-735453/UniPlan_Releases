@@ -1,6 +1,6 @@
 # Privacy Policy
 
-**Last updated: June 5, 2026**
+**Last updated: June 9, 2026**
 
 ## 1. DATA UniPlan COLLECTS AND STORES
 
@@ -66,19 +66,19 @@ With your permission:
 
 ## 3. THIRD-PARTY SERVICES
 
-| Service                                | Purpose                                                     | Data Shared                                                                           |
-| -------------------------------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| **Firebase (Google)**                  | Authentication, Cloud Firestore, Cloud Functions, Analytics | Email, authentication tokens, encrypted user data, anonymous analytics events         |
-| **Google/Apple Sign-In**               | Account creation and login                                  | Email address, profile information (name, avatar URL)                                 |
-| **Cloudflare Worker (auth-proxy.dstudios.org)** | OAuth redirect proxy for Apple and Google Sign-In on non-iOS platforms | OAuth authorization codes and ID tokens (transiently, never stored or logged)          |
-| **Google reCAPTCHA**                   | Bot protection during login/registration                    | Browser behavior signals (anonymous)                                                  |
-| **OpenHolidays API**                   | Fetching school and public holiday data                     | Country and subdivision selections                                                    |
-| **Schulmanager Online**                | German school management integration                        | Your Schulmanager credentials and fetched schedule data                               |
-| **Adservio**                           | Romanian school management integration                      | Your Adservio credentials and fetched grade/absence data                              |
-| **Flag CDN (flagcdn.com)**             | Country flag images in settings                             | None (public image requests)                                                          |
-| **GitHub (raw.githubusercontent.com)** | Desktop app update checks                                   | None (anonymous GET requests to check version)                                        |
-| **Sentry (sentry.io)**                 | Error tracking and performance monitoring                   | Device information, OS version, stack traces, navigation performance data, IP address |
-| **RevenueCat (revenuecat.com)**        | In-app purchase and subscription management                 | App User ID, purchase receipts, transaction identifiers, subscription status          |
+| Service                                         | Purpose                                                                | Data Shared                                                                           |
+| ----------------------------------------------- | ---------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| **Firebase (Google)**                           | Authentication, Cloud Firestore, Cloud Functions, Analytics            | Email, authentication tokens, encrypted user data, anonymous analytics events         |
+| **Google/Apple Sign-In**                        | Account creation and login                                             | Email address, profile information (name, avatar URL)                                 |
+| **Cloudflare Worker (auth-proxy.dstudios.org)** | OAuth redirect proxy for Apple and Google Sign-In on non-iOS platforms | OAuth authorization codes and ID tokens (transiently, never stored or logged)         |
+| **Google reCAPTCHA**                            | Bot protection during login/registration                               | Browser behavior signals (anonymous)                                                  |
+| **OpenHolidays API**                            | Fetching school and public holiday data                                | Country and subdivision selections                                                    |
+| **Schulmanager Online**                         | German school management integration                                   | Your Schulmanager credentials and fetched schedule data                               |
+| **Adservio**                                    | Romanian school management integration                                 | Your Adservio credentials and fetched grade/absence data                              |
+| **Flag CDN (flagcdn.com)**                      | Country flag images in settings                                        | None (public image requests)                                                          |
+| **GitHub (raw.githubusercontent.com)**          | Desktop app update checks                                              | None (anonymous GET requests to check version)                                        |
+| **Sentry (sentry.io)**                          | Error tracking and performance monitoring                              | Device information, OS version, stack traces, navigation performance data, IP address |
+| **RevenueCat (revenuecat.com)**                 | In-app purchase and subscription management                            | App User ID, purchase receipts, transaction identifiers, subscription status          |
 
 ## 4. DATA RETENTION AND DELETION
 

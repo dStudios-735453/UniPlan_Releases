@@ -155,7 +155,7 @@ jobs:
         shell: bash
         env:
           APPLE_CERTIFICATE_MAC: ${{ secrets.APPLE_CERTIFICATE_MAC }}
-          APPLE_CERTIFICATE_MAC_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
+          APPLE_CERTIFICATE_MAC_PASSWORD: ${{ secrets.APPLE_CERTIFICATE_MAC_PASSWORD }}
         run: |
           echo "$APPLE_CERTIFICATE_MAC" | base64 --decode > certificate.p12
           security create-keychain -p temp apple.keychain
@@ -174,7 +174,7 @@ jobs:
           TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
           APPLE_SIGNING_IDENTITY: ${{ secrets.APPLE_SIGNING_IDENTITY }}
           APPLE_CERTIFICATE_MAC: ${{ secrets.APPLE_CERTIFICATE_MAC }}
-          APPLE_CERTIFICATE_MAC_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
+          APPLE_CERTIFICATE_MAC_PASSWORD: ${{ secrets.APPLE_CERTIFICATE_MAC_PASSWORD }}
           APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
           APPLE_API_KEY: ${{ secrets.APPLE_API_KEY }}
           APPLE_API_KEY_ID: ${{ secrets.APPLE_API_KEY_ID }}

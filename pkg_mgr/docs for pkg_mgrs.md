@@ -45,7 +45,7 @@ snapcraft pack
 #### Void:
 
 ```
-
+./xbps-src pkg uniplan
 ```
 
 ## Installing from build
@@ -81,7 +81,7 @@ flatpak-builder --user --install --force-clean build-dir org.dstudios.uniplan.ym
 #### Snapcraft:
 
 ```
-sudo snap install ./x.snap --dangerous
+sudo snap install ./uniplan.snap --dangerous
 ```
 
 #### Arch:
@@ -93,5 +93,53 @@ sudo snap install ./x.snap --dangerous
 #### Void:
 
 ```
+sudo xbps-install --repository $(pwd)/hostdir/binpkgs/nonfree uniplan
+```
 
+## Removing
+
+### Windows
+
+#### Winget
+
+```
+winget uninstall dStudios.UniPlan
+```
+
+#### Scoop:
+
+```
+scoop uninstall uniplan
+```
+
+#### Choco:
+
+```
+choco uninstall uniplan -y
+```
+
+### Linux
+
+#### Flatpak:
+
+```
+flatpak uninstall org.dstudios.uniplan.yml
+```
+
+#### Snapcraft:
+
+```
+sudo snap remove uniplan
+```
+
+#### Arch:
+
+```
+sudo pacman -R uniplan
+```
+
+#### Void:
+
+```
+sudo xbps-remove -y uniplan
 ```

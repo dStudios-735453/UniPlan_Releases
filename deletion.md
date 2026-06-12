@@ -1,6 +1,6 @@
 # Account & Data Deletion Request
 
-**Last updated:** June 2, 2026
+**Last updated:** June 11, 2026
 
 This page explains how to request the permanent deletion of your UniPlan account and associated data.
 
@@ -33,13 +33,13 @@ Once confirmed, all your cloud data is immediately deleted and your account is p
 
 If you are unable to use the in-app deletion option, you can submit a deletion request by contacting us:
 
-**Email:** david@dstudios.org  
+**Email:** david@dstudios.org
 **GitHub Issues:** https://github.com/dStudios-735453/UniPlan_Releases/issues
 
 When submitting a request, please include:
 
 - Your **email address** used for your UniPlan account.
-- Whether you want to delete **all data** or just your **cloud account**.
+- Whether you want to delete **all data** or **part of your data** or just your **cloud account**.
 
 We will process your request within reasonable time and confirm once the deletion is complete.
 

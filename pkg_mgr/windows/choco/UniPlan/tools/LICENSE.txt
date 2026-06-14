@@ -1,6 +1,6 @@
-﻿From: https://github.com/dStudios-735453/UniPlan_Releases/blob/main/LICENSE
-
 # PROPRIETARY END-USER LICENSE AGREEMENT (EULA)
+
+**Last updated: June 14, 2026**
 
 **IMPORTANT — READ CAREFULLY:** This End-User License Agreement ("EULA") is a legal agreement between you (either an individual or a single entity, "Licensee" or "you") and David735453 ("Licensor") for the software product identified above, which includes computer software and may include associated media, printed materials, and "online" or electronic documentation (collectively, the "Software").
 
@@ -13,7 +13,7 @@ By installing, copying, downloading, accessing, or otherwise using the Software,
 The Licensor grants you a limited, non-exclusive, non-transferable, revocable license to use the Software solely for your personal, non-commercial purposes, subject to the terms and conditions of this EULA. This license does not grant you any rights to:
 
 - Use the Software on behalf of third parties.
-- Distribute, sublicense, lease, rent, lend, or otherwise transfer the Software to any other party.
+- Distribute, sublicense, lease, rent, lend, or otherwise transfer the Software to any other party, except as expressly permitted for package managers in Section 2.
 - Use the Software in any manner that violates applicable laws or regulations.
 
 ---
@@ -22,7 +22,7 @@ The Licensor grants you a limited, non-exclusive, non-transferable, revocable li
 
 You may not, and you agree not to, and you may not permit any third party to:
 
-- Copy, reproduce, or distribute the Software in whole or in part, except as expressly permitted by this EULA.
+- Copy, reproduce, or distribute the Software in whole or in part, except as expressly permitted by this EULA. Notwithstanding the foregoing, software package managers and package repositories are permitted to host, distribute, and install the unmodified Software package for the purpose of deployment to users.
 - Modify, adapt, translate, or create derivative works based upon the Software.
 - Reverse engineer, decompile, disassemble, or otherwise attempt to derive the source code of the Software, except and only to the extent that such restriction is prohibited by applicable law.
 - Remove, alter, or obscure any proprietary notices, labels, or marks on the Software.
@@ -33,7 +33,7 @@ You may not, and you agree not to, and you may not permit any third party to:
 
 ## 3. INTELLECTUAL PROPERTY
 
-The Software is licensed, not sold. The Licensor retain all right, title, and interest in and to the Software, including all intellectual property rights therein. This EULA does not grant you any ownership rights to the Software. All copyrights, trademarks, trade secrets, patents, and other intellectual property rights in and to the Software are and shall remain the exclusive property of the Licensor and its suppliers.
+The Software is licensed, not sold. The Licensor retains all right, title, and interest in and to the Software, including all intellectual property rights therein. This EULA does not grant you any ownership rights to the Software. All copyrights, trademarks, trade secrets, patents, and other intellectual property rights in and to the Software are and shall remain the exclusive property of the Licensor and its suppliers.
 
 ---
 
@@ -70,5 +70,3 @@ This EULA constitutes the entire agreement between you and the Licensor relating
 ---
 
 **By using the Software, you acknowledge that you have read this EULA, understand it, and agree to be bound by its terms and conditions.**
-
-© 2026 dStudios. All rights reserved.

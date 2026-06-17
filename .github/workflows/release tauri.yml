@@ -153,6 +153,10 @@ jobs:
           security set-keychain-settings -lut 7200 apple.keychain
           security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k temp ~/Library/Keychains/apple.keychain-db
 
+      - name: Install create-dmg
+        if: matrix.build_flag == 'true' && matrix.os == 'macos-latest'
+        run: brew install create-dmg
+
       - name: Build Tauri App
         if: matrix.build_flag == 'true'
         working-directory: source
@@ -167,7 +171,7 @@ jobs:
           APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
           APPLE_ID: ${{ secrets.APPLE_ID }}
           APPLE_PASSWORD: ${{ secrets.APPLE_ID_PASSWORD }}
-        run: npx tauri build --target ${{ matrix.target }}
+        run: npx tauri build --target ${{ matrix.target }} --verbose
 
       - name: Upload Artifacts
         if: matrix.build_flag == 'true'

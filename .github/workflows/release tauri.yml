@@ -164,7 +164,7 @@ jobs:
           APPLE_SIGNING_IDENTITY: ${{ secrets.APPLE_SIGNING_IDENTITY }}
           APPLE_CERTIFICATE_PATH: ${{ github.workspace }}/../_temp/certificate.p12
           APPLE_CERTIFICATE_PASSWORD: ${{ secrets.APPLE_CERTIFICATE_MAC_PASSWORD }}
-        run: npx tauri build --target ${{ matrix.target }} --verbose
+        run: npx tauri build --target ${{ matrix.target }}
 
       - name: Build, Sign, and Notarize DMG
         if: matrix.build_flag == 'true' && matrix.os == 'macos-latest'
@@ -188,7 +188,6 @@ jobs:
             --apple-id "$NOTARIZE_USER" \
             --password "$NOTARIZE_PASS" \
             --team-id "$NOTARIZE_TEAM" \
-            --keychain ./apple.keychain
 
           create-dmg \
             --volname "UniPlan" \

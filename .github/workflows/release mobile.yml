@@ -130,7 +130,9 @@ jobs:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
           IOS_PROFILE: ${{ github.event.inputs.ios_build_type }}
-        run: eas build --platform ios --profile production --local --non-interactive --auto-submit
+        run: |
+          eas build --platform ios --profile production --local --non-interactive
+          eas submit --platform ios --path ./ios.ipa
 
       - name: Build iOS Development
         if: matrix.platform == 'ios' && matrix.build_flag == 'true' && github.event.inputs.ios_build_type == 'development'
@@ -140,7 +142,7 @@ jobs:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
           IOS_PROFILE: ${{ github.event.inputs.ios_build_type }}
-        run: eas build --platform ios --profile development --local --non-interactive --output="ios-development.ipa"
+        run: eas build --platform ios --profile development --local --non-interactive --output="ios.ipa"
 
       - name: Upload to Diawi
         if: matrix.platform == 'ios' && matrix.build_flag == 'true' && github.event.inputs.ios_build_type == 'development'

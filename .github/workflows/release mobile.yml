@@ -131,7 +131,7 @@ jobs:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
           IOS_PROFILE: ${{ github.event.inputs.ios_build_type }}
         run: |
-          eas build --platform ios --profile production --local --non-interactive
+          eas build --platform ios --profile production --local --non-interactive --output="ios.ipa"
           eas submit --platform ios --path ./ios.ipa
 
       - name: Build iOS Development

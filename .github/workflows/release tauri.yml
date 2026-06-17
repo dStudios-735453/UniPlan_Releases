@@ -188,7 +188,7 @@ jobs:
             --apple-id "$NOTARIZE_USER" \
             --password "$NOTARIZE_PASS" \
             --team-id "$NOTARIZE_TEAM" \
-            --keychain apple.keychain
+            --keychain ./apple.keychain
 
           create-dmg \
             --volname "UniPlan" \

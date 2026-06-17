@@ -153,10 +153,6 @@ jobs:
           security set-keychain-settings -lut 7200 apple.keychain
           security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k temp ~/Library/Keychains/apple.keychain-db
 
-      - name: Install create-dmg
-        if: matrix.build_flag == 'true' && matrix.os == 'macos-latest'
-        run: brew install create-dmg
-
       - name: Build Tauri App
         if: matrix.build_flag == 'true'
         working-directory: source
@@ -168,10 +164,42 @@ jobs:
           APPLE_SIGNING_IDENTITY: ${{ secrets.APPLE_SIGNING_IDENTITY }}
           APPLE_CERTIFICATE_PATH: ${{ github.workspace }}/../_temp/certificate.p12
           APPLE_CERTIFICATE_PASSWORD: ${{ secrets.APPLE_CERTIFICATE_MAC_PASSWORD }}
-          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
-          APPLE_ID: ${{ secrets.APPLE_ID }}
-          APPLE_PASSWORD: ${{ secrets.APPLE_ID_PASSWORD }}
         run: npx tauri build --target ${{ matrix.target }} --verbose
+
+      - name: Build, Sign, and Notarize DMG
+        if: matrix.build_flag == 'true' && matrix.os == 'macos-latest'
+        shell: bash
+        env:
+          NOTARIZE_USER: ${{ secrets.APPLE_ID }}
+          NOTARIZE_PASS: ${{ secrets.APPLE_ID_PASSWORD }}
+          NOTARIZE_TEAM: ${{ secrets.APPLE_TEAM_ID }}
+          SIGNING_IDENTITY: ${{ secrets.APPLE_SIGNING_IDENTITY }}
+          TARGET_ARCH: ${{ matrix.target }}
+        run: |
+          APP_VERSION=$(node -p "require('./source/package.json').version")
+          DMG_FILENAME="UniPlan_${APP_VERSION}_universal.dmg"
+
+          mkdir -p dmg_staging
+          cp -r source/src-tauri/target/universal-apple-darwin/release/bundle/macos/UniPlan.app dmg_staging/
+
+          create-dmg \
+            --volname "UniPlan" \
+            --volicon "source/src-tauri/icons/icon.icns" \
+            --background "source/src-tauri/icons/background_dmg.png" \
+            --window-size 660 400 \
+            --window-pos 200 200 \
+            --icon-size 100 \
+            --icon "UniPlan.app" 180 170 \
+            --app-drop-link 480 170 \
+            --hide-extension "UniPlan.app" \
+            --skip-jenkins \
+            --codesign "$SIGNING_IDENTITY" \
+            --notarize "$NOTARIZE_USER:$NOTARIZE_PASS:$NOTARIZE_TEAM" \
+            "$DMG_FILENAME" \
+            dmg_staging/
+
+          mkdir -p source/src-tauri/target/universal-apple-darwin/release/bundle/dmg
+          mv "$DMG_FILENAME" source/src-tauri/target/universal-apple-darwin/release/bundle/dmg/
 
       - name: Upload Artifacts
         if: matrix.build_flag == 'true'

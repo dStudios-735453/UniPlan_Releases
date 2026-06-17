@@ -176,6 +176,8 @@ jobs:
           SIGNING_IDENTITY: ${{ secrets.APPLE_SIGNING_IDENTITY }}
           TARGET_ARCH: ${{ matrix.target }}
         run: |
+          brew install create-dmg
+
           APP_VERSION=$(node -p "require('./source/package.json').version")
           DMG_FILENAME="UniPlan_${APP_VERSION}_universal.dmg"
 

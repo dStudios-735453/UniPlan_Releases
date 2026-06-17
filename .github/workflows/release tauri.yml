@@ -184,6 +184,12 @@ jobs:
           mkdir -p dmg_staging
           cp -r source/src-tauri/target/universal-apple-darwin/release/bundle/macos/UniPlan.app dmg_staging/
 
+          xcrun notarytool store-credentials "ci-profile" \
+            --apple-id "$NOTARIZE_USER" \
+            --password "$NOTARIZE_PASS" \
+            --team-id "$NOTARIZE_TEAM" \
+            --keychain apple.keychain
+
           create-dmg \
             --volname "UniPlan" \
             --volicon "source/src-tauri/icons/icon.icns" \
@@ -196,7 +202,7 @@ jobs:
             --hide-extension "UniPlan.app" \
             --skip-jenkins \
             --codesign "$SIGNING_IDENTITY" \
-            --notarize "$NOTARIZE_USER:$NOTARIZE_PASS:$NOTARIZE_TEAM" \
+            --notarize "ci-profile" \
             "$DMG_FILENAME" \
             dmg_staging/
 

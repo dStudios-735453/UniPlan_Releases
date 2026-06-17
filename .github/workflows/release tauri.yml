@@ -199,7 +199,6 @@ jobs:
             --icon "UniPlan.app" 180 170 \
             --app-drop-link 480 170 \
             --hide-extension "UniPlan.app" \
-            --skip-jenkins \
             --codesign "$SIGNING_IDENTITY" \
             --notarize "ci-profile" \
             "$DMG_FILENAME" \

@@ -145,11 +145,11 @@ jobs:
         run: eas build --platform ios --profile development --local --non-interactive --output="ios.ipa"
 
       - name: Upload to Diawi
-        if: matrix.platform == 'ios' && matrix.build_flag == 'true' && github.event.inputs.ios_build_type == 'development'
+        if: matrix.platform == 'ios' && matrix.build_flag == 'true'
         uses: rnkdsh/action-upload-diawi@v1.5.12
         with:
           token: ${{ secrets.DIAWI_TOKEN }}
-          file: "source/ios-development.ipa"
+          file: "source/ios.ipa"
 
       - name: Upload Android Artifact
         if: matrix.platform == 'android' && matrix.build_flag == 'true'

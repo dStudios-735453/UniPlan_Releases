@@ -157,72 +157,69 @@ jobs:
           APPLE_CERTIFICATE_MAC: ${{ secrets.APPLE_CERTIFICATE_MAC }}
           APPLE_CERTIFICATE_MAC_PASSWORD: ${{ secrets.APPLE_CERTIFICATE_MAC_PASSWORD }}
         run: |
-          echo "$APPLE_CERTIFICATE_MAC" | base64 --decode > certificate.p12
+          echo "$APPLE_CERTIFICATE_MAC" | base64 --decode > $RUNNER_TEMP/certificate.p12
+
           security create-keychain -p temp apple.keychain
           security default-keychain -s apple.keychain
           security unlock-keychain -p temp apple.keychain
-          security import certificate.p12 -k apple.keychain -P "$APPLE_CERTIFICATE_MAC_PASSWORD" -T /usr/bin/codesign -T /usr/bin/security
-          security set-key-partition-list -S apple-tool:,apple: -s -k temp apple.keychain
-          rm -f certificate.p12
+
+          security import $RUNNER_TEMP/certificate.p12 -k apple.keychain -P "$APPLE_CERTIFICATE_MAC_PASSWORD" -T /usr/bin/codesign -T /usr/bin/security -A
+          security set-keychain-settings -lut 7200 apple.keychain
+          security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k temp ~/Library/Keychains/apple.keychain-db
 
       - name: Build Tauri App
         if: matrix.build_flag == 'true'
         working-directory: source
         shell: bash
         env:
+          CI: true
           TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
           TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
           APPLE_SIGNING_IDENTITY: ${{ secrets.APPLE_SIGNING_IDENTITY }}
-          APPLE_CERTIFICATE_MAC: ${{ secrets.APPLE_CERTIFICATE_MAC }}
-          APPLE_CERTIFICATE_MAC_PASSWORD: ${{ secrets.APPLE_CERTIFICATE_MAC_PASSWORD }}
-          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
-          APPLE_API_KEY: ${{ secrets.APPLE_API_KEY }}
-          APPLE_API_KEY_ID: ${{ secrets.APPLE_API_KEY_ID }}
-          APPLE_API_ISSUER: ${{ secrets.APPLE_API_ISSUER }}
+          APPLE_CERTIFICATE_PATH: ${{ github.workspace }}/../_temp/certificate.p12
+          APPLE_CERTIFICATE_PASSWORD: ${{ secrets.APPLE_CERTIFICATE_MAC_PASSWORD }}
         run: npx tauri build --target ${{ matrix.target }}
 
-      - name: Build dmg
-        if: matrix.build_flag == 'true' && matrix.os == 'macos-latest'
-        working-directory: source/src-tauri/target/universal-apple-darwin/release/bundle/macos
-        shell: bash
-        run: |
-          rm -rf ../dmg/*.dmg
-          npm install --global create-dmg
-          find . -name "*.app" -exec create-dmg --identity "${{ secrets.APPLE_SIGNING_IDENTITY }}" {} \;
-
-      - name: Notarize DMG
+      - name: Build, Sign, and Notarize DMG
         if: matrix.build_flag == 'true' && matrix.os == 'macos-latest'
         shell: bash
         env:
-          APPLE_API_KEY: ${{ secrets.APPLE_API_KEY }}
-          APPLE_API_KEY_ID: ${{ secrets.APPLE_API_KEY_ID }}
-          APPLE_API_ISSUER: ${{ secrets.APPLE_API_ISSUER }}
+          NOTARIZE_USER: ${{ secrets.APPLE_ID }}
+          NOTARIZE_PASS: ${{ secrets.APPLE_ID_PASSWORD }}
+          NOTARIZE_TEAM: ${{ secrets.APPLE_TEAM_ID }}
+          SIGNING_IDENTITY: ${{ secrets.APPLE_SIGNING_IDENTITY }}
+          TARGET_ARCH: ${{ matrix.target }}
         run: |
-          dmg_path=$(find "${{ github.workspace }}/source/src-tauri/target/universal-apple-darwin/release/bundle" -name "*.dmg" | head -n 1)
-          if [ -n "$dmg_path" ]; then
-            echo "$APPLE_API_KEY" > /tmp/apple_api_key.p8
-            xcrun notarytool submit "$dmg_path" \
-              --key /tmp/apple_api_key.p8 \
-              --key-id "$APPLE_API_KEY_ID" \
-              --issuer "$APPLE_API_ISSUER" \
-              --wait
-            rm -f /tmp/apple_api_key.p8
-          else
-            echo "No DMG found for notarization"
-            exit 1
-          fi
+          brew install create-dmg
 
-      - name: Staple Notarization Ticket
-        if: matrix.build_flag == 'true' && matrix.os == 'macos-latest'
-        shell: bash
-        run: |
-          dmg_path=$(find "${{ github.workspace }}/source/src-tauri/target/universal-apple-darwin/release/bundle" -name "*.dmg" | head -n 1)
-          if [ -n "$dmg_path" ]; then
-            xcrun stapler staple "$dmg_path"
-          else
-            echo "No DMG found for stapling"
-            exit 1
-          fi
+          APP_VERSION=$(node -p "require('./source/package.json').version")
+          DMG_FILENAME="UniPlan_${APP_VERSION}_universal.dmg"
+
+          mkdir -p dmg_staging
+          cp -r source/src-tauri/target/universal-apple-darwin/release/bundle/macos/UniPlan.app dmg_staging/
+
+          xcrun notarytool store-credentials "ci-profile" \
+            --apple-id "$NOTARIZE_USER" \
+            --password "$NOTARIZE_PASS" \
+            --team-id "$NOTARIZE_TEAM" \
+
+          create-dmg \
+            --volname "UniPlan" \
+            --volicon "source/src-tauri/icons/icon.icns" \
+            --background "source/src-tauri/icons/background_dmg.png" \
+            --window-size 660 400 \
+            --window-pos 200 200 \
+            --icon-size 100 \
+            --icon "UniPlan.app" 180 170 \
+            --app-drop-link 480 170 \
+            --hide-extension "UniPlan.app" \
+            --codesign "$SIGNING_IDENTITY" \
+            --notarize "ci-profile" \
+            "$DMG_FILENAME" \
+            dmg_staging/
+
+          mkdir -p source/src-tauri/target/universal-apple-darwin/release/bundle/dmg
+          mv "$DMG_FILENAME" source/src-tauri/target/universal-apple-darwin/release/bundle/dmg/
 
       - name: Upload Artifacts
         if: matrix.build_flag == 'true'

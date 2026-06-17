@@ -146,7 +146,7 @@ jobs:
           echo "$APPLE_CERTIFICATE_MAC" | base64 --decode > $RUNNER_TEMP/certificate.p12
           security create-keychain -p temp apple.keychain
           security default-keychain -s apple.keychain
-          security unlock-keychain -p temp apple.keychai
+          security unlock-keychain -p temp apple.keychain
           security import $RUNNER_TEMP/certificate.p12 -k apple.keychain -P "$APPLE_CERTIFICATE_MAC_PASSWORD" -T /usr/bin/codesign -T /usr/bin/security
           security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k temp apple.keychain
 

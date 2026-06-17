@@ -144,11 +144,14 @@ jobs:
           APPLE_CERTIFICATE_MAC_PASSWORD: ${{ secrets.APPLE_CERTIFICATE_MAC_PASSWORD }}
         run: |
           echo "$APPLE_CERTIFICATE_MAC" | base64 --decode > $RUNNER_TEMP/certificate.p12
+
           security create-keychain -p temp apple.keychain
           security default-keychain -s apple.keychain
           security unlock-keychain -p temp apple.keychain
-          security import $RUNNER_TEMP/certificate.p12 -k apple.keychain -P "$APPLE_CERTIFICATE_MAC_PASSWORD" -T /usr/bin/codesign -T /usr/bin/security
-          security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k temp apple.keychain
+
+          security import $RUNNER_TEMP/certificate.p12 -k apple.keychain -P "$APPLE_CERTIFICATE_MAC_PASSWORD" -T /usr/bin/codesign -T /usr/bin/security -A
+          security set-keychain-settings -lut 7200 apple.keychain
+          security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k temp ~/Library/Keychains/apple.keychain-db
 
       - name: Build Tauri App
         if: matrix.build_flag == 'true'

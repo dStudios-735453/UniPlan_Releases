@@ -28,7 +28,7 @@ on:
 
 jobs:
   prepare:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     outputs:
       version: ${{ steps.vars.outputs.version }}
       release_title: ${{ steps.vars.outputs.release_title }}
@@ -63,10 +63,10 @@ jobs:
       matrix:
         include:
           - platform: android
-            os: ubuntu-latest
+            os: ubuntu-26.04
             build_flag: ${{ github.event.inputs.build_android }}
           - platform: ios
-            os: macos-latest
+            os: macos-26
             build_flag: ${{ github.event.inputs.build_ios }}
     runs-on: ${{ matrix.os }}
     env:
@@ -120,7 +120,7 @@ jobs:
         if: matrix.platform == 'ios' && matrix.build_flag == 'true'
         uses: maxim-lobanov/setup-xcode@v1
         with:
-          xcode-version: latest-stable
+          xcode-version: latest
 
       - name: Build iOS Production
         if: matrix.platform == 'ios' && matrix.build_flag == 'true' && github.event.inputs.ios_build_type == 'production'
@@ -172,7 +172,7 @@ jobs:
 
   create-release:
     needs: [prepare, build-mobile]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     steps:
       - name: Download all artifacts
         uses: actions/download-artifact@v8

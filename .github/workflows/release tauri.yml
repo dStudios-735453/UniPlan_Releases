@@ -26,7 +26,7 @@ on:
 
 jobs:
   prepare:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     outputs:
       version: ${{ steps.vars.outputs.version }}
       release_title: ${{ steps.vars.outputs.release_title }}
@@ -79,17 +79,17 @@ jobs:
             target: aarch64-pc-windows-msvc
             build_flag: ${{ github.event.inputs.build_win_arm64 }}
           - platform: mac_universal
-            os: macos-latest
+            os: macos-26
             arch: arm64
             target: universal-apple-darwin
             build_flag: ${{ github.event.inputs.build_mac_universal }}
           - platform: linux_x64
-            os: ubuntu-latest
+            os: ubuntu-26.04
             arch: x86_64
             target: x86_64-unknown-linux-gnu
             build_flag: ${{ github.event.inputs.build_linux_x64 }}
           - platform: linux_arm64
-            os: ubuntu-24.04-arm
+            os: ubuntu-26.04-arm
             arch: aarch64
             target: aarch64-unknown-linux-gnu
             build_flag: ${{ github.event.inputs.build_linux_arm64 }}
@@ -126,7 +126,7 @@ jobs:
           workspaces: source/src-tauri -> target
 
       - name: Install Linux dependencies
-        if: (matrix.os == 'ubuntu-latest' || matrix.os == 'ubuntu-24.04-arm') && matrix.build_flag == 'true'
+        if: (matrix.os == 'ubuntu-26.04' || matrix.os == 'ubuntu-26.04-arm') && matrix.build_flag == 'true'
         run: |
           sudo apt-get update
           sudo apt-get install -y libgtk-3-dev libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf
@@ -227,7 +227,7 @@ jobs:
 
   create-release:
     needs: [prepare, build-desktop]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     steps:
       - name: Download all artifacts
         uses: actions/download-artifact@v8

@@ -1,11 +1,11 @@
 [submodule "winget-pkgs"]
-	path = pkg_mgr\\windows\\winget-pkgs
-	url = https://github.com/dStudios-735453/winget-pkgs
+path=pkg_mgr\\windows\\winget-pkgs
+url=https://github.com/dStudios-735453/winget-pkgs
 
 [submodule "scoop_extras"]
-	path = pkg_mgr\\windows\\scoop
-	url = https://github.com/dStudios-735453/scoop_extras
+path=pkg_mgr\\windows\\scoop
+url=https://github.com/dStudios-735453/scoop_extras
 
 [submodule "pkg_mgr/linux/void-packages"]
-	path = pkg_mgr/linux/void-packages
-	url = https://github.com/dStudios-735453/void-packages
+path=pkg_mgr/linux/void-packages
+url=https://github.com/dStudios-735453/void-packages

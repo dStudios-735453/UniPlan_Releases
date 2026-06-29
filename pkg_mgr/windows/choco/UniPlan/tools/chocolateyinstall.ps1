@@ -12,14 +12,14 @@ if ($architecture -match 'ARM') {
 }
 
 $packageArgs = @{
-  packageName   = $env:ChocolateyPackageName
-  installerType = 'exe'
-  url           = $url
-  softwareName  = 'UniPlan*'
-  checksum      = $checksum
-  checksumType  = 'sha256'
-  silentArgs    = '/S'
-  validExitCodes= @(0)
+    packageName = $env:ChocolateyPackageName
+    installerType = 'exe'
+    url = $url
+    softwareName = 'UniPlan*'
+    checksum = $checksum
+    checksumType = 'sha256'
+    silentArgs = '/S'
+    validExitCodes = @(0)
 }
 
 Install-ChocolateyPackage @packageArgs

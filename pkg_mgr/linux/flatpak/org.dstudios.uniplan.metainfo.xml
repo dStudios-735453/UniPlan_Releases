@@ -1,13 +1,15 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
   <id>org.dstudios.uniplan</id>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>Proprietary</project_license>
-  
+
   <name>UniPlan</name>
   <summary>An all-in-one academic planner for students</summary>
   <description>
-    <p>UniPlan is a comprehensive academic planner built with React Native Expo and Tauri. It is designed to help students manage their academic lives by tracking classes, homework and to-do items</p>
+    <p>UniPlan is a comprehensive academic planner built with React Native Expo and Tauri. It is
+      designed to help students manage their academic lives by tracking classes, homework and to-do
+      items</p>
   </description>
 
   <keywords>
@@ -34,11 +36,17 @@
   <screenshots> <!-- NOT REAL SCREENSHOTS -->
     <screenshot type="default">
       <caption>Timeline Page</caption>
-      <image type="source">https://github.com/dStudios-735453/UniPlan_Releases/blob/main/pkg_mgr/linux/flatpak/timeline.png</image>
+      <image
+        type="source"
+      >
+        https://github.com/dStudios-735453/UniPlan_Releases/blob/main/pkg_mgr/linux/flatpak/timeline.png</image>
     </screenshot>
     <screenshot type="default">
       <caption>Homework Page</caption>
-      <image type="source">https://github.com/dStudios-735453/UniPlan_Releases/blob/main/pkg_mgr/linux/flatpak/homework.png</image>
+      <image
+        type="source"
+      >
+        https://github.com/dStudios-735453/UniPlan_Releases/blob/main/pkg_mgr/linux/flatpak/homework.png</image>
     </screenshot>
   </screenshots>
 

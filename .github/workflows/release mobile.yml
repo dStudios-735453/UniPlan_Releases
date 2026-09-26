@@ -74,7 +74,7 @@ jobs:
     steps:
       - name: Checkout Source
         if: matrix.build_flag == 'true'
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           repository: dStudios-735453/UniPlan
           token: ${{ secrets.UNIPLAN_SOURCE_GITHUB }}

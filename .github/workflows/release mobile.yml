@@ -82,7 +82,7 @@ jobs:
 
       - name: Setup Node
         if: matrix.build_flag == 'true'
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           cache: "npm"
           cache-dependency-path: source/package.json

@@ -92,7 +92,7 @@ jobs:
             target: aarch64-pc-windows-msvc
             build_flag: ${{ github.event.inputs.build_win_arm64 }}
           - platform: mac_universal
-            os: macos-26
+            os: macos-latest
             arch: arm64
             target: universal-apple-darwin
             build_flag: ${{ github.event.inputs.build_mac_universal }}
@@ -249,7 +249,7 @@ jobs:
             os: ubuntu-26.04
             build_flag: ${{ github.event.inputs.build_android }}
           - platform: ios
-            os: macos-26
+            os: macos-latest
             build_flag: ${{ github.event.inputs.build_ios }}
     runs-on: ${{ matrix.os }}
     env:

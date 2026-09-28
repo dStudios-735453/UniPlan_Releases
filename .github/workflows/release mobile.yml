@@ -114,6 +114,7 @@ jobs:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
           ANDROID_PROFILE: ${{ github.event.inputs.android_build_type }}
+          APP_VARIANT: ${{ github.event.inputs.android_build_type }}
         run: npx eas build --platform android --profile "${ANDROID_PROFILE}" --local --non-interactive
 
       - name: Prepare xcode
@@ -130,6 +131,7 @@ jobs:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
           IOS_PROFILE: ${{ github.event.inputs.ios_build_type }}
+          APP_VARIANT: production
         run: |
           eas build --platform ios --profile production --local --non-interactive --output="ios.ipa"
           eas submit --platform ios --path ./ios.ipa
@@ -142,10 +144,11 @@ jobs:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
           IOS_PROFILE: ${{ github.event.inputs.ios_build_type }}
+          APP_VARIANT: development
         run: eas build --platform ios --profile development --local --non-interactive --output="ios.ipa"
 
       - name: Upload to Diawi
-        if: matrix.platform == 'ios' && matrix.build_flag == 'true'
+        if: matrix.platform == 'ios' && matrix.build_flag == 'true' && github.event.inputs.ios_build_type == 'development'
         uses: rnkdsh/action-upload-diawi@v1.5.13
         with:
           token: ${{ secrets.DIAWI_TOKEN }}

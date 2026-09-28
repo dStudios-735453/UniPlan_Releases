@@ -297,6 +297,7 @@ jobs:
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          APP_VARIANT: production
         run: eas build --platform android --profile production --local --non-interactive
 
       - name: Prepare xcode
@@ -312,6 +313,7 @@ jobs:
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          APP_VARIANT: production
         run: npx eas build --platform ios --profile production --local --non-interactive --auto-submit
 
       - name: Upload Android Artifact

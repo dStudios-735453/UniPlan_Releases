@@ -167,6 +167,15 @@ jobs:
           security set-keychain-settings -lut 7200 apple.keychain
           security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k temp ~/Library/Keychains/apple.keychain-db
 
+      - name: Disable devtools for production
+        if: matrix.build_flag == 'true'
+        working-directory: source
+        shell: bash
+        run: |
+          jq '.app.windows |= map(.devtools = false)' src-tauri/tauri.conf.json > src-tauri/tauri.conf.json.tmp \
+            && mv src-tauri/tauri.conf.json.tmp src-tauri/tauri.conf.json
+          grep -q '"devtools": false' src-tauri/tauri.conf.json
+
       - name: Build Tauri App
         if: matrix.build_flag == 'true'
         working-directory: source
